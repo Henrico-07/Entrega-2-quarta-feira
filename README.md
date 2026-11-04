@@ -34,7 +34,7 @@ O projeto tem como objetivo desenvolver um banco de dados relacional para organi
 | Nome completo                     | RGM         | GitHub                              |
 | --------------------------------- | ----------- | ----------------------------------- |
 | Victor Alves Raimundo             | [47745908]  | [zVitou](https://github.com/zVitou) |
-| Rafael Dias Andrade               | [PREENCHER] | [syntax-rafa](https://github.com/syntax-rafa) |
+| Rafael Dias Andrade               | [47713496] | [syntax-rafa](https://github.com/syntax-rafa) |
 | Gustavo Henrique Ribeiro da Silva | [47667770] | [PREENCHER]                         |
 | Henrico Saltanian Martins | [46981721]                         |
 
