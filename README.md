@@ -187,9 +187,8 @@ Algumas informações solicitadas não foram disponibilizadas pelo entrevistado,
 
 | Apontamento do professor                 | Correção realizada |
 | ---------------------------------------- | ------------------ |
-| [PREENCHER conforme a correção recebida] | [PREENCHER]        |
-
-**Observação:** os apontamentos reais da primeira entrega ainda precisam ser inseridos pelo grupo.
+| [O esqueleto do banco de dados estava incorreto.] | [SIM]        |
+| [Questão 21: detalhar as condições de pagamento parcelado.]  |  [SIM]
 
 ---
 
@@ -462,16 +461,6 @@ O grupo deverá manter os arquivos atualizados e utilizar commits para registrar
 ---
 
 ## 7. Apresentação Corporativa Final
-
-A apresentação deverá ter aproximadamente oito minutos e seguir a sequência:
-
-1. Contextualização da empresa e dos problemas identificados.
-2. Apresentação da solução proposta.
-3. Demonstração do modelo lógico.
-4. Explicação da implementação SQL.
-5. Demonstração das consultas gerenciais e de auditoria.
-6. Apresentação das possibilidades de BI e IA.
-7. Benefícios que o sistema poderá oferecer à organização.
 
 **Link dos slides:** [INSERIR LINK].
 
