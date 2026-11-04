@@ -447,12 +447,12 @@ Entrega-2-quarta-feira/
 | Artefato | Caminho sugerido no repositório | Situação |
 | --- | --- | --- |
 | Relatório técnico | `README.md` | Este arquivo |
-| DER conceitual | `diagramas/DER_Coruja_Surf_Conceitual.pdf` | A enviar/confirmar versão revisada |
-| Modelo lógico | `diagramas/Modelo_Logico_Coruja_Surf.pdf` | Atualizar diagrama para corresponder ao SQL |
+| DER conceitual | `DER_Coruja_Surf_Conceitual (1).xlsx` | A enviar/confirmar versão revisada |
+| Modelo lógico | `mermaid-diagram.png` | Atualizar diagrama para corresponder ao SQL |
 | Dicionário de dados | `documentos/dicionario_de_dados_coruja_surf.pdf` | A enviar |
-| Levantamento de requisitos | `documentos/Relatorio_Levantamento_Requisitos_Coruja_Surf.pdf` | A enviar |
-| Script SQL | `sql/Bancod-de-dados-CORUJA_SURF.sql` | A enviar |
-| Evidência da entrevista | `evidencias/entrevista_videochamada.jpg` | A enviar |
+| Levantamento de requisitos | `Relatorio_Levantamento_Requisitos_Coruja_Surf (1).pdf` | A enviar |
+| Script SQL | `dicionario_de_dados_coruja_surf.pdf` | A enviar |
+| Evidência da entrevista | `prova_entrevista.jpg` | A enviar |
 | Slides da apresentação | `apresentacao/apresentacao_final.pptx` | A enviar |
 
 ### Evidência da entrevista
