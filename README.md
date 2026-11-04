@@ -35,8 +35,9 @@ O projeto tem como objetivo desenvolver um banco de dados relacional para organi
 | --------------------------------- | ----------- | ----------------------------------- |
 | Victor Alves Raimundo             | [47745908]  | [zVitou](https://github.com/zVitou) |
 | Rafael Dias Andrade               | [PREENCHER] | [syntax-rafa](https://github.com/syntax-rafa) |
-| Gustavo Henrique Ribeiro da Silva | [PREENCHER] | [PREENCHER]                         |
-| João Paulo [sobrenome completo]   | [PREENCHER] | [PREENCHER]                         |
+| Gustavo Henrique Ribeiro da Silva | [47667770] | [PREENCHER]                         |
+| Henrico Saltanian Martins 
+| [46981721] | [PREENCHER]                         |
 
 ---
 
