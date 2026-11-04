@@ -461,7 +461,7 @@ O grupo deverá manter os arquivos atualizados e utilizar commits para registrar
 
 ## 7. Apresentação Corporativa Final
 
-**Link dos slides:** [INSERIR LINK].
+**Link dos slides:** [https://canva.link/41nvx0wsvk4enp9].
 
 ---
 
