@@ -4,7 +4,28 @@
 **Disciplina:** Modelagem de Banco de Dados
 **SGBD:** MySQL 8.0+
 
-O projeto tem como objetivo desenvolver um banco de dados para organizar as informações da Coruja Surf, facilitando o controle de clientes, produtos, estoque, vendas, pedidos, pagamentos e notificações.
+O projeto tem como objetivo desenvolver um banco de dados relacional para organizar as informações da Coruja Surf, facilitando o controle de clientes, usuários, produtos, estoque, vendas, pedidos, pagamentos e notificações.
+
+
+## Sumário
+
+- [Integrantes](#integrantes)
+- [1. Revisão e modelagem do sistema](#11-revisão-do-modelo-conceitual)
+  - [Caracterização da organização](#caracterização-da-organização)
+  - [Problemas, escopo e processos](#problemas-identificados)
+  - [Requisitos e regras de negócio](#requisitos-funcionais)
+  - [Conversão para o modelo lógico](#12-conversão-do-modelo-conceitual-para-o-modelo-lógico)
+  - [Chaves primárias e estrangeiras](#13-definição-de-chaves-primárias-e-estrangeiras)
+  - [Normalização](#14-processo-de-normalização)
+  - [Decisões técnicas](#15-justificativas-técnicas-das-decisões)
+  - [BI e IA](#16-proposta-de-bi-e-ia)
+- [2. Modelo lógico relacional](#2-modelo-lógico-relacional)
+- [3. Implementação SQL](#3-implementação-sql)
+- [4. Massa de dados](#4-massa-de-dados)
+- [5. Organização do repositório](#5-repositório-github)
+- [6. Uso de inteligência artificial](#6-uso-de-inteligência-artificial)
+- [7. Apresentação final](#7-apresentação-corporativa-final)
+
 
 ---
 
@@ -281,11 +302,42 @@ Essas funcionalidades são propostas futuras e não fazem parte da implementaç�
 
 ## 2. Modelo Lógico Relacional
 
-O modelo lógico deverá apresentar as tabelas, seus atributos, tipos de dados, chaves primárias, chaves estrangeiras e cardinalidades.
+O modelo lógico representa a estrutura relacional do banco de dados: tabelas, atributos, tipos de dados, chaves primárias (PK), chaves estrangeiras (FK) e relacionamentos.
 
-**Arquivo do diagrama:** [INSERIR LINK DO MODELO LÓGICO].
+### Estrutura utilizada na implementação SQL
 
-**Software utilizado:** [PREENCHER].
+O script SQL atual contém dez tabelas:
+
+| Tabela | Finalidade |
+| --- | --- |
+| `cliente` | Armazenar os dados dos clientes. |
+| `usuario` | Armazenar usuários, credenciais e perfis de acesso. |
+| `produto` | Cadastrar os produtos comercializados. |
+| `estoque` | Controlar quantidade atual e estoque mínimo dos produtos. |
+| `venda` | Registrar vendas presenciais e o usuário responsável. |
+| `item_venda` | Registrar os produtos que compõem cada venda. |
+| `pedido` | Registrar pedidos realizados por clientes. |
+| `item_pedido` | Registrar os produtos que compõem cada pedido. |
+| `pagamento` | Registrar pagamentos relacionados a vendas ou pedidos. |
+| `notificacao` | Armazenar notificações destinadas aos usuários. |
+
+### Relacionamentos principais
+
+- Um cliente pode possuir várias vendas e vários pedidos.
+- Um usuário pode registrar várias vendas e receber várias notificações.
+- Um produto possui um registro de estoque.
+- Uma venda possui seus itens na tabela `item_venda`.
+- Um pedido possui seus itens na tabela `item_pedido`.
+- Os itens de venda e de pedido referenciam os produtos cadastrados.
+- Os pagamentos podem estar associados a uma venda ou a um pedido, conforme a estrutura atual do SQL.
+
+### Diagrama do modelo lógico
+
+**Arquivo previsto:** `diagramas/Modelo_Logico_Coruja_Surf.pdf`
+
+O diagrama lógico que foi elaborado inicialmente pelo grupo apresenta diferenças em relação às dez tabelas implementadas no SQL. Para a entrega final, ele deverá ser atualizado para refletir a estrutura descrita nesta seção, incluindo as tabelas `VENDA`, `ITEM_VENDA`, `ITEM_PEDIDO`, `ESTOQUE` e `NOTIFICACAO`, além das respectivas PKs e FKs.
+
+**Software utilizado:** [PREENCHER com o nome do programa usado para criar o diagrama].
 
 ---
 
@@ -365,24 +417,51 @@ Os dados permitem demonstrar situações como estoque baixo, vendas, pedidos, pa
 
 ## 5. Repositório GitHub
 
-O projeto está disponível no GitHub:
+O repositório do projeto está disponível em:
 
-[https://github.com/zVitou/Entrega-2-quarta-feira](https://github.com/zVitou/Entrega-2-quarta-feira)
+[**Entrega 2 — Coruja Surf (GitHub)**](https://github.com/zVitou/Entrega-2-quarta-feira)
 
-Arquivos que deverão estar organizados no repositório:
+### Organização de pastas e arquivos
 
-| Artefato                   | Arquivo                                  |
-| -------------------------- | ---------------------------------------- |
-| Relatório técnico          | `README.md`                              |
-| DER conceitual revisado    | [INSERIR CAMINHO]                        |
-| Modelo lógico              | [INSERIR CAMINHO]                        |
-| Dicionário de dados        | [INSERIR CAMINHO]                        |
-| Levantamento de requisitos | [INSERIR CAMINHO]                        |
-| Script SQL                 | [INSERIR CAMINHO]                        |
-| Evidência da entrevista    | `evidencias/entrevista_videochamada.jpg` |
-| Slides da apresentação     | [INSERIR CAMINHO]                        |
+A estrutura abaixo é a organização recomendada para os materiais da entrega. Os arquivos precisam ser enviados para as respectivas pastas no GitHub para que os caminhos passem a funcionar.
 
-O repositório deverá manter os arquivos atualizados e o histórico de commits dos integrantes.
+```text
+Entrega-2-quarta-feira/
+├── README.md
+├── diagramas/
+│   ├── DER_Coruja_Surf_Conceitual.pdf
+│   └── Modelo_Logico_Coruja_Surf.pdf
+├── documentos/
+│   ├── dicionario_de_dados_coruja_surf.pdf
+│   └── Relatorio_Levantamento_Requisitos_Coruja_Surf.pdf
+├── sql/
+│   └── Bancod-de-dados-CORUJA_SURF.sql
+├── evidencias/
+│   └── entrevista_videochamada.jpg
+└── apresentacao/
+    └── apresentacao_final.pptx
+```
+
+### Relação dos artefatos
+
+| Artefato | Caminho sugerido no repositório | Situação |
+| --- | --- | --- |
+| Relatório técnico | `README.md` | Este arquivo |
+| DER conceitual | `diagramas/DER_Coruja_Surf_Conceitual.pdf` | A enviar/confirmar versão revisada |
+| Modelo lógico | `diagramas/Modelo_Logico_Coruja_Surf.pdf` | Atualizar diagrama para corresponder ao SQL |
+| Dicionário de dados | `documentos/dicionario_de_dados_coruja_surf.pdf` | A enviar |
+| Levantamento de requisitos | `documentos/Relatorio_Levantamento_Requisitos_Coruja_Surf.pdf` | A enviar |
+| Script SQL | `sql/Bancod-de-dados-CORUJA_SURF.sql` | A enviar |
+| Evidência da entrevista | `evidencias/entrevista_videochamada.jpg` | A enviar |
+| Slides da apresentação | `apresentacao/apresentacao_final.pptx` | A enviar |
+
+### Evidência da entrevista
+
+A entrevista foi realizada por videochamada pelo WhatsApp. A captura de tela deverá ser adicionada à pasta `evidencias/` com o nome `entrevista_videochamada.jpg`. A imagem registra a chamada, mas não informa a data da entrevista.
+
+### Histórico e colaboração
+
+O grupo deverá manter os arquivos atualizados e utilizar commits para registrar as alterações realizadas por cada integrante. Antes da entrega, conferir se todos os caminhos apresentados nesta seção correspondem a arquivos realmente existentes no repositório.
 
 ---
 
