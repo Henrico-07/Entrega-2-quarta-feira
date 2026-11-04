@@ -336,7 +336,6 @@ O script SQL atual contém dez tabelas:
 
 O diagrama lógico que foi elaborado inicialmente pelo grupo apresenta diferenças em relação às dez tabelas implementadas no SQL. Para a entrega final, ele deverá ser atualizado para refletir a estrutura descrita nesta seção, incluindo as tabelas `VENDA`, `ITEM_VENDA`, `ITEM_PEDIDO`, `ESTOQUE` e `NOTIFICACAO`, além das respectivas PKs e FKs.
 
-**Software utilizado:** [PREENCHER com o nome do programa usado para criar o diagrama].
 
 ---
 
