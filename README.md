@@ -421,26 +421,6 @@ O repositório do projeto está disponível em:
 
 [**Entrega 2 — Coruja Surf (GitHub)**](https://github.com/zVitou/Entrega-2-quarta-feira)
 
-### Organização de pastas e arquivos
-
-A estrutura abaixo é a organização recomendada para os materiais da entrega. Os arquivos precisam ser enviados para as respectivas pastas no GitHub para que os caminhos passem a funcionar.
-
-```text
-Entrega-2-quarta-feira/
-├── README.md
-├── diagramas/
-│   ├── DER_Coruja_Surf_Conceitual.pdf
-│   └── Modelo_Logico_Coruja_Surf.pdf
-├── documentos/
-│   ├── dicionario_de_dados_coruja_surf.pdf
-│   └── Relatorio_Levantamento_Requisitos_Coruja_Surf.pdf
-├── sql/
-│   └── Bancod-de-dados-CORUJA_SURF.sql
-├── evidencias/
-│   └── entrevista_videochamada.jpg
-└── apresentacao/
-    └── apresentacao_final.pptx
-```
 
 ### Relação dos artefatos
 
