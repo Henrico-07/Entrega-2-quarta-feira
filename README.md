@@ -1,31 +1,21 @@
-[README.md](https://github.com/user-attachments/files/34329564/README.md)
 # Coruja Surf — Entrega 2: Modelo Lógico, Implementação SQL e Apresentação Final
 
-Modelagem de um sistema de gestão de informações para uma loja de roupas com vendas presenciais e online.
+**Projeto:** Sistema de Gestão de Vendas, Estoque e Pedidos
+**Disciplina:** Modelagem de Banco de Dados
+**SGBD:** MySQL 8.0+
 
-> Itens marcados com `[PREENCHER]` dependem de informações que só o grupo tem (RGM, telefone, datas, números reais). Apague este aviso antes de entregar.
+O projeto tem como objetivo desenvolver um banco de dados para organizar as informações da Coruja Surf, facilitando o controle de clientes, produtos, estoque, vendas, pedidos, pagamentos e notificações.
+
+---
 
 ## Integrantes
 
-| Nome completo do aluno | RGM | Usuário do GitHub |
-|---|---|---|
-| Victor Alves Raimundo | [PREENCHER] | zVitou |
-| Rafael Dias Andrade | [PREENCHER] | [PREENCHER] |
-| Gustavo Henrique Ribeiro da Silva | [PREENCHER] | [PREENCHER] |
-| João Paulo [sobrenome completo] | [PREENCHER] | [PREENCHER] |
-
-## Índice de artefatos
-
-| Artefato | Arquivo |
-|---|---|
-| DER conceitual revisado | [PREENCHER: ex. `diagramas/DER_Coruja_Surf.pdf`] |
-| Modelo lógico | [PREENCHER: ex. `diagramas/Modelo_Logico_Coruja_Surf.pdf`] |
-| Dicionário de dados (HTML ou .md para GTI) | [PREENCHER: ex. `docs/dicionario_de_dados.html`] |
-| Levantamento completo | [PREENCHER: ex. `levantamento/levantamento.md`] |
-| Script SQL completo | [PREENCHER: ex. `docs/script.sql`] |
-| Massa de dados (se separada) | [PREENCHER: ex. `docs/massa_de_dados.sql`] |
-| Slides da apresentação | [PREENCHER] |
-| Evidências (fotos JPG/PNG) | [PREENCHER: ex. `evidencias/`] |
+| Nome completo                     | RGM         | GitHub                              |
+| --------------------------------- | ----------- | ----------------------------------- |
+| Victor Alves Raimundo             | [PREENCHER] | [zVitou](https://github.com/zVitou) |
+| Rafael Dias Andrade               | [PREENCHER] | [PREENCHER]                         |
+| Gustavo Henrique Ribeiro da Silva | [PREENCHER] | [PREENCHER]                         |
+| João Paulo [sobrenome completo]   | [PREENCHER] | [PREENCHER]                         |
 
 ---
 
@@ -33,403 +23,403 @@ Modelagem de um sistema de gestão de informações para uma loja de roupas com 
 
 ### Caracterização da organização
 
-**Nome e natureza:** Coruja Surf — comércio varejista de vestuário (roupas de estilo surf), com vendas presenciais e online. Organização com fins lucrativos.
+A Coruja Surf é uma organização do ramo de comércio varejista de vestuário, com vendas presenciais e on-line, voltada para roupas de estilo surf.
 
-**Contexto e porte:**
+| Informação                       | Dados                                            |
+| -------------------------------- | ------------------------------------------------ |
+| Nome                             | Coruja Surf                                      |
+| Ramo de atuação                  | Comércio de vestuário                            |
+| Tipo de atividade                | Vendas presenciais e on-line                     |
+| Fins lucrativos                  | Sim                                              |
+| Responsável entrevistado         | Antônio Gracia Ferreira Júnior                   |
+| CNPJ                             | Não informado pelo entrevistado                  |
+| Pessoas que utilizarão o sistema | 1 proprietário e aproximadamente 4 colaboradores |
+| Principal dispositivo de uso     | Celular / smartphone                             |
+| Controle atual                   | Registros manuais em papel                       |
+| Sistema integrado atual          | Não possui                                       |
 
-| Item | Valor |
-|---|---|
-| Fins lucrativos | Sim |
-| Pessoas que usarão o sistema | 1 proprietário + cerca de 4 colaboradores |
-| Dispositivo principal de uso | Celular |
-| Clientes cadastrados/ativos | [PREENCHER: número informado pelo responsável] |
-| Vendas presenciais por semana/mês | [PREENCHER] |
-| Pedidos online por semana/mês | [PREENCHER] |
-| Produtos (itens distintos com tamanho/cor) no catálogo | [PREENCHER] |
-| Controle atual | Papel, sem sistema integrado |
+O levantamento identificou que a empresa realiza seus controles predominantemente de forma manual, sem um sistema integrado para organizar cadastros, vendas, pedidos e estoque.
 
-**Problemas e necessidades identificados:**
+O relatório também aponta que as operações de vendas e o acompanhamento das atividades on-line demandam tempo e trabalho manual.
 
-| Código | Problema |
-|---|---|
-| P1 | Controle de estoque inadequado: não se sabe com precisão o que há disponível nem o que está acabando. |
-| P2 | Falta de cadastro de clientes, produtos e funcionários (dados espalhados em papel). |
-| P3 | Dificuldade para acompanhar vendas e pedidos (online e presencial) e seus históricos. |
-| P4 | Dificuldade para acompanhar pagamentos e comprovantes (o que foi pago, pendente ou recusado). |
-| P5 | Falta de avisos sobre pedidos novos, pagamentos recebidos e estoque baixo. |
-| P6 | Falta de controle de acesso: informações financeiras e administrativas não são restritas ao proprietário. |
+### Problemas identificados
 
-**Escopo do sistema:** o banco reúne os dados de toda a operação da loja: clientes, produtos, estoque, vendas presenciais com itens, pedidos online com itens, pagamentos, usuários com perfis e notificações. Não se restringe ao estoque, que é apenas um dos problemas declarados.
+| Código | Problema                                                                                                        |
+| ------ | --------------------------------------------------------------------------------------------------------------- |
+| P1     | Controle de estoque inadequado, dificultando saber as quantidades disponíveis e os produtos que estão acabando. |
+| P2     | Falta de cadastro estruturado de clientes, produtos e funcionários.                                             |
+| P3     | Dificuldade para acompanhar vendas, pedidos e seus respectivos históricos.                                      |
+| P4     | Dificuldade para acompanhar pagamentos e comprovantes.                                                          |
+| P5     | Falta de notificações sobre novos pedidos, pagamentos e estoque baixo.                                          |
+| P6     | Necessidade de restringir informações administrativas e financeiras ao proprietário.                            |
 
-**Justificativa da escolha:** [PREENCHER: por que a Coruja Surf; declarar se algum integrante tem vínculo com a loja ou com o responsável. O vínculo não gera desconto, mas não dispensa a comprovação da entrevista no local].
+### Escopo do sistema
 
-**Evidências da organização:**
+O sistema proposto deverá organizar as informações da operação da Coruja Surf, incluindo:
 
-- Perfil no Google Meu Negócio: [PREENCHER link]
-- Endereço completo: [PREENCHER]
-- Contato (telefone/e-mail/rede social): [PREENCHER]
-- Fotos (arquivos JPG/PNG dentro do repositório): [PREENCHER: ex. `evidencias/fachada.jpg`]
+- Cadastro de clientes.
+- Cadastro de usuários e controle de acesso.
+- Cadastro de produtos.
+- Controle de estoque.
+- Registro de vendas presenciais.
+- Registro de pedidos on-line.
+- Registro dos itens de vendas e pedidos.
+- Controle de pagamentos e comprovantes.
+- Consulta de históricos.
+- Notificações sobre estoque, pedidos e pagamentos.
 
-> Pendências da Entrega 1 que precisam ser fechadas nesta etapa: CNPJ, endereço e contato, site/rede social, regras detalhadas de pagamento, estoque e permissões, necessidade de relatórios.
+### Justificativa da escolha
 
-**Responsável pela organização:** Antônio Gracia Ferreira Júnior — telefone: [PREENCHER].
+A Coruja Surf foi escolhida por apresentar necessidades relacionadas à organização de dados e ao controle de vendas e estoque. O levantamento permitiu identificar oportunidades de melhoria por meio de um banco de dados relacional, centralizando informações que atualmente são controladas manualmente.
+
+### Evidências da organização
+
+- **Responsável entrevistado:** Antônio Gracia Ferreira Júnior.
+- **Localização compartilhada:** [Google Maps — Coruja Surf](https://maps.app.goo.gl/jXdKenokzq6ur3Av8?g_st=aw).
+- **CNPJ:** não disponibilizado pelo entrevistado.
+- **Endereço completo:** não informado diretamente.
+- **Outros dados comerciais:** algumas informações não puderam ser disponibilizadas pelo entrevistado.
 
 ### Relato da entrevista
 
-- **Quem:** Antônio Gracia Ferreira Júnior (proprietário) [CONFIRMAR função]. Integrantes presentes: [PREENCHER].
-- **Quando e onde:** [PREENCHER data] na loja Coruja Surf, [PREENCHER endereço].
-- **Comprovação:** foto da entrevista no local: [PREENCHER arquivo, ex. `evidencias/entrevista.jpg`] (já existe `IMG-20260913-WA0112.jpg` na raiz; mova para a pasta de evidências e confira se mostra o ambiente da loja).
-- **Achados por observação presencial:** [PREENCHER: como a venda é anotada, onde fica o estoque, que papéis circulam].
-- **Achados por resposta do entrevistado:** [PREENCHER].
-- **Nova visita (se houve) e o que mudou desde a Entrega 1:** [PREENCHER].
-- **Levantamento completo:** [levantamento/levantamento.md](levantamento/levantamento.md)
+A entrevista foi realizada por meio de uma **videochamada pelo WhatsApp**, com o responsável Antônio Gracia Ferreira Júnior.
 
-**Resumo do levantamento:** a loja opera com registros em papel. O proprietário precisa saber o que vende, o que está em estoque, quais pedidos online estão pendentes e quais pagamentos foram recebidos. Os colaboradores usam o sistema pelo celular, com acesso restrito. Funcionário não deve ver informações financeiras e administrativas.
+| Informação                 | Registro                        |
+| -------------------------- | ------------------------------- |
+| Entrevistado               | Antônio Gracia Ferreira Júnior  |
+| Meio utilizado             | Videochamada pelo WhatsApp      |
+| Data                       | Não informada                   |
+| Horário visível na captura | 11h39                           |
+| Local físico da entrevista | Não informado                   |
+| Evidência                  | Captura de tela da videochamada |
+
+Durante a entrevista, foram abordadas questões relacionadas ao funcionamento da empresa, ao controle de vendas, ao estoque, aos pedidos e às necessidades de informatização.
+
+Algumas informações solicitadas não foram disponibilizadas pelo entrevistado, que informou não poder fornecê-las. Por esse motivo, esses dados foram mantidos como não informados, sem estimativas ou preenchimentos por suposição.
+
+**Evidência da entrevista:** inserir a captura de tela da videochamada na pasta `evidencias/`, com o nome `entrevista_videochamada.jpg`.
 
 ### Processos de negócio
 
-| Código | Processo | Dados envolvidos |
-|---|---|---|
-| PR01 | Cadastro de clientes | nome, telefone, e-mail, endereço, data de cadastro |
-| PR02 | Cadastro de produtos | nome, descrição, categoria, tamanho, cor, preço, situação (ativo/inativo) |
-| PR03 | Controle de estoque | por produto: quantidade atual, estoque mínimo, data da última atualização |
-| PR04 | Venda presencial | data, cliente (opcional), usuário que registrou, status; para cada item: produto, quantidade, preço unitário (subtotal e total calculados) |
-| PR05 | Pedido online | data, cliente, status (Recebido → Pagamento pendente → Pago → Em preparação → Enviado → Concluído/Cancelado), observação; para cada item: produto, quantidade, preço unitário |
-| PR06 | Pagamento e comprovante | valor, forma (Pix, dinheiro, cartão de crédito/débito, boleto, transferência), parcelas, status, comprovante, data |
-| PR07 | Consulta de históricos | vendas, pedidos e clientes |
-| PR08 | Notificações | tipo (estoque baixo, pagamento recebido, novo pedido, aviso geral), mensagem, destinatário, lida/não lida |
-| PR09 | Controle de usuários e permissões | nome, e-mail, senha (hash), perfil (Proprietário/Funcionário), ativo |
+| Código | Processo             | Descrição                                                |
+| ------ | -------------------- | -------------------------------------------------------- |
+| PR01   | Cadastro de clientes | Registro das informações dos clientes.                   |
+| PR02   | Cadastro de produtos | Registro dos produtos comercializados.                   |
+| PR03   | Controle de estoque  | Acompanhamento das quantidades disponíveis.              |
+| PR04   | Venda presencial     | Registro das vendas e dos produtos vendidos.             |
+| PR05   | Pedido on-line       | Registro e acompanhamento dos pedidos.                   |
+| PR06   | Pagamentos           | Registro de valores, formas de pagamento e comprovantes. |
+| PR07   | Histórico            | Consulta de vendas, clientes e pedidos.                  |
+| PR08   | Notificações         | Avisos sobre estoque baixo, pedidos e pagamentos.        |
+| PR09   | Controle de usuários | Gerenciamento de usuários e permissões.                  |
 
-**Processos prováveis não incluídos e justificativa:** [PREENCHER após confirmar com o responsável]. Candidatos a justificar: compras de fornecedores, trocas e devoluções, emissão de nota fiscal, entrega/frete, programa de fidelidade.
+### Requisitos funcionais
 
-### Requisitos
+| Código | Requisito                                                           |
+| ------ | ------------------------------------------------------------------- |
+| RF01   | Cadastrar e consultar clientes.                                     |
+| RF02   | Consultar o histórico de vendas e pedidos dos clientes.             |
+| RF03   | Cadastrar e consultar produtos.                                     |
+| RF04   | Controlar entradas e saídas do estoque.                             |
+| RF05   | Consultar quantidade disponível e estoque mínimo.                   |
+| RF06   | Registrar vendas e seus respectivos itens.                          |
+| RF07   | Registrar pedidos on-line e acompanhar seus status.                 |
+| RF08   | Registrar pagamentos e comprovantes.                                |
+| RF09   | Consultar históricos de vendas e pedidos.                           |
+| RF10   | Gerar notificações sobre novos pedidos, pagamentos e estoque baixo. |
+| RF11   | Cadastrar usuários e controlar seus perfis.                         |
+| RF12   | Restringir informações financeiras conforme o perfil de acesso.     |
+| RF13   | Permitir marcar notificações como lidas.                            |
 
-**Requisitos funcionais**
+### Requisitos não funcionais
 
-| Código | Requisito |
-|---|---|
-| RF01 | Cadastrar e consultar clientes com nome, telefone, e-mail, endereço e data de cadastro. |
-| RF02 | Consultar o histórico de vendas e pedidos de cada cliente. |
-| RF03 | Cadastrar e consultar produtos com nome, descrição, categoria, tamanho, cor, preço e situação. |
-| RF04 | Controlar entradas e saídas de estoque de cada produto, atualizando a quantidade atual. |
-| RF05 | Consultar a quantidade disponível e o estoque mínimo de cada produto. |
-| RF06 | Registrar vendas com data, cliente (opcional), usuário responsável e status e, para cada item, produto, quantidade e preço unitário, calculando subtotal e total. |
-| RF07 | Registrar pedidos online com cliente, data, observação e itens (produto, quantidade, preço unitário) e acompanhar o status. |
-| RF08 | Registrar pagamentos de venda ou pedido com valor, forma, parcelas, status, comprovante e data. |
-| RF09 | Consultar históricos de vendas e pedidos por período, status e cliente. |
-| RF10 | Gerar notificações de novo pedido, pagamento recebido e estoque baixo. |
-| RF11 | Cadastrar usuários com nome, e-mail, senha e perfil, e ativar/desativar acesso. |
-| RF12 | Diferenciar proprietário e funcionário, restringindo informações financeiras ao proprietário. |
-| RF13 | Marcar notificações como lidas. |
-
-**Requisitos não funcionais**
-
-| Código | Requisito |
-|---|---|
-| RNF01 | Interface responsiva, priorizando celulares. |
-| RNF02 | Autenticação de usuários por e-mail e senha. |
-| RNF03 | Controle de acesso por perfil. |
-| RNF04 | Senhas armazenadas somente como hash, nunca em texto puro. |
-| RNF05 | Consistência dos dados garantida por chaves, restrições e transações. |
-| RNF06 | Consultas rápidas nos históricos (índices por data e status). |
-| RNF07 | Possibilidade de expansão futura do modelo. |
-
-**Requisitos prováveis não incluídos e justificativa:** [PREENCHER].
+| Código | Requisito                                                       |
+| ------ | --------------------------------------------------------------- |
+| RNF01  | O sistema deverá priorizar dispositivos móveis.                 |
+| RNF02  | O acesso deverá ocorrer por autenticação de usuário.            |
+| RNF03  | O sistema deverá possuir controle de acesso por perfil.         |
+| RNF04  | As senhas deverão ser armazenadas como hash.                    |
+| RNF05  | O banco deverá manter a integridade dos dados.                  |
+| RNF06  | As consultas de histórico deverão ser organizadas e eficientes. |
+| RNF07  | O modelo deverá permitir futuras expansões.                     |
 
 ### Regras de negócio
 
-| Código | Regra |
-|---|---|
-| RN01 | A venda pode ser presencial ou online (vendas presenciais em `venda`; online em `pedido`). |
-| RN02 | Toda venda deve registrar os produtos vendidos (itens com quantidade e preço unitário). |
-| RN03 | A saída de produtos deve atualizar o estoque. |
-| RN04 | Pedidos online podem ter comprovante de pagamento. |
-| RN05 | O sistema acompanha o status de vendas, pedidos e pagamentos. |
-| RN06 | Deve haver alerta quando a quantidade atual for menor ou igual ao estoque mínimo. |
-| RN07 | Informações administrativas e financeiras são restritas ao proprietário. |
-| RN08 | Existem os perfis Proprietário e Funcionário. |
-| RN09 | A utilização deve priorizar dispositivos móveis. |
-| RN10 | Todo produto cadastrado nasce com registro de estoque (quantidade 0, mínimo 5). |
-| RN11 | Preço, quantidade em estoque e valores monetários não podem ser negativos; a quantidade de cada item deve ser maior que zero. |
-| RN12 | Cada pagamento pertence a uma venda **ou** a um pedido, nunca aos dois. |
-| RN13 | O valor total da venda/pedido é a soma dos subtotais dos seus itens. |
-| RN14 | Venda/pedido com cliente excluído permanece no histórico (cliente fica nulo). Venda, pedido, produto e usuário com histórico não podem ser excluídos. |
+| Código | Regra                                                                                       |
+| ------ | ------------------------------------------------------------------------------------------- |
+| RN01   | As vendas presenciais e os pedidos on-line serão registrados separadamente.                 |
+| RN02   | Toda venda deverá registrar os produtos vendidos.                                           |
+| RN03   | A saída de produtos deverá atualizar o estoque.                                             |
+| RN04   | Pedidos on-line poderão possuir comprovantes de pagamento.                                  |
+| RN05   | O sistema deverá acompanhar os status de vendas, pedidos e pagamentos.                      |
+| RN06   | Deverá existir alerta quando o estoque estiver igual ou abaixo do mínimo.                   |
+| RN07   | Informações administrativas e financeiras deverão ser restritas ao proprietário.            |
+| RN08   | O sistema deverá diferenciar os perfis de proprietário e funcionário.                       |
+| RN09   | A utilização deverá priorizar dispositivos móveis.                                          |
+| RN10   | Todo produto cadastrado deverá possuir um registro de estoque.                              |
+| RN11   | Preços e quantidades não poderão ser negativos.                                             |
+| RN12   | Cada pagamento deverá pertencer a uma venda ou a um pedido, nunca aos dois simultaneamente. |
+| RN13   | O valor total de uma venda ou pedido deverá corresponder à soma dos itens.                  |
+| RN14   | O histórico deverá ser preservado conforme as regras de exclusão e integridade do banco.    |
 
-**Regras prováveis não incluídas e justificativa:** [PREENCHER]. Candidatos: LGPD (dados pessoais de clientes), emissão de nota fiscal, política de troca, validade/unicidade de CPF.
+### Correções da Entrega 1
 
-### Notação e software do DER
+| Apontamento do professor                 | Correção realizada |
+| ---------------------------------------- | ------------------ |
+| [PREENCHER conforme a correção recebida] | [PREENCHER]        |
 
-- DER criado no software: [PREENCHER: ex. brModelo]
-- Arquivo: [PREENCHER]
-
-**Resumo do DER revisado (entidades e cardinalidades):**
-
-| Relacionamento | Cardinalidade |
-|---|---|
-| Cliente realiza Venda | Cliente (0,n) — Venda (0,1) |
-| Cliente realiza Pedido | Cliente (0,n) — Pedido (0,1) |
-| Usuário registra Venda | Usuário (0,n) — Venda (1,1) |
-| Usuário recebe Notificação | Usuário (0,n) — Notificação (1,1) |
-| Produto possui Estoque | Produto (1,1) — Estoque (1,1) |
-| Venda é composta de Produto (entidade associativa ITEM_VENDA: quantidade, preço unitário, subtotal) | Venda (1,n) — Produto (0,n) |
-| Pedido é composto de Produto (entidade associativa ITEM_PEDIDO: quantidade, preço unitário, subtotal) | Pedido (1,n) — Produto (0,n) |
-| Venda possui Pagamento | Venda (0,n) — Pagamento (0,1) |
-| Pedido possui Pagamento | Pedido (0,n) — Pagamento (0,1) |
-
-### Caso A — apontamentos da correção da Entrega 1
-
-| Apontamento da correção da E1 | O que mudou no trabalho | Por quê |
-|---|---|---|
-| [PREENCHER com cada apontamento recebido] | [PREENCHER] | [PREENCHER] |
-
-> Atenção: apontamento não citado nesta tabela é tratado como não corrigido.
+**Observação:** os apontamentos reais da primeira entrega ainda precisam ser inseridos pelo grupo.
 
 ---
 
 ## 1.2 Conversão do Modelo Conceitual para o Modelo Lógico
 
-**Entidades → Tabelas:** cada entidade virou uma tabela: `cliente`, `usuario`, `produto`, `estoque`, `venda`, `item_venda`, `pedido`, `item_pedido`, `pagamento`, `notificacao`.
+O modelo conceitual foi convertido em tabelas relacionais, utilizando chaves primárias e estrangeiras para representar os relacionamentos entre as entidades.
 
-**Atributos → Colunas:**
+As dez tabelas utilizadas na implementação atual são:
 
-| Tipo de atributo | Conversão |
-|---|---|
-| Identificadores | `INT AUTO_INCREMENT` (chave substituta) |
-| Textos curtos | `VARCHAR` com tamanho ajustado ao conteúdo |
-| Textos longos | `TEXT` (descrição, observação, mensagem) |
-| Valores monetários | `DECIMAL(10,2)` |
-| Datas com hora | `DATETIME` com `DEFAULT CURRENT_TIMESTAMP` quando for data de criação |
-| Domínios fechados (perfil, status, forma de pagamento, tipo de notificação) | `ENUM` |
-| Indicadores sim/não | `BOOLEAN` |
-| Atributos derivados (`subtotal` do item) | Coluna gerada (`GENERATED ALWAYS AS ... STORED`) |
+1. `cliente`
+2. `usuario`
+3. `produto`
+4. `estoque`
+5. `venda`
+6. `item_venda`
+7. `pedido`
+8. `item_pedido`
+9. `pagamento`
+10. `notificacao`
 
-**Relacionamentos → Chaves:**
+Os relacionamentos entre as tabelas permitem organizar os dados e evitar repetições desnecessárias.
 
-| Relacionamento | Tradução |
-|---|---|
-| 1:N (cliente→venda, cliente→pedido, usuário→venda, usuário→notificação, venda→pagamento, pedido→pagamento) | FK no lado N |
-| 1:1 (produto→estoque) | FK em `estoque.id_produto` com `UNIQUE` |
-| N:N (venda–produto, pedido–produto) | Tabelas associativas `item_venda` e `item_pedido`, com FK para os dois lados e atributos próprios (quantidade, preço unitário, subtotal) |
-| Pagamento de venda ou de pedido | Duas FKs opcionais em `pagamento` (`id_venda`, `id_pedido`), uma sempre nula (RN12) |
-
-**Cardinalidades:** (0,1) no lado do cliente nas vendas e pedidos vira FK `NULL`; (1,1) vira FK `NOT NULL`; (1,n) de venda/pedido para itens é garantida pela aplicação (o banco permite a venda sem itens; ver auditoria A02/A03).
-
-**Generalização/especialização:** o DER não possui. [CONFIRMAR]
+As tabelas `item_venda` e `item_pedido` representam os produtos que fazem parte de cada venda ou pedido.
 
 ---
 
 ## 1.3 Definição de Chaves Primárias e Estrangeiras
 
-| Tabela | Chave primária | Chaves estrangeiras |
-|---|---|---|
-| `cliente` | `id_cliente` | — |
-| `usuario` | `id_usuario` | — |
-| `produto` | `id_produto` | — |
-| `estoque` | `id_estoque` | `id_produto` → `produto` (UNIQUE) |
-| `venda` | `id_venda` | `id_cliente` → `cliente` (NULL); `id_usuario` → `usuario` |
-| `item_venda` | `id_item_venda` | `id_venda` → `venda`; `id_produto` → `produto` |
-| `pedido` | `id_pedido` | `id_cliente` → `cliente` (NULL) |
-| `item_pedido` | `id_item_pedido` | `id_pedido` → `pedido`; `id_produto` → `produto` |
-| `pagamento` | `id_pagamento` | `id_venda` → `venda` (NULL); `id_pedido` → `pedido` (NULL) |
-| `notificacao` | `id_notificacao` | `id_usuario` → `usuario` |
+| Tabela        | Chave primária   | Chaves estrangeiras        |
+| ------------- | ---------------- | -------------------------- |
+| `cliente`     | `id_cliente`     | —                          |
+| `usuario`     | `id_usuario`     | —                          |
+| `produto`     | `id_produto`     | —                          |
+| `estoque`     | `id_estoque`     | `id_produto`               |
+| `venda`       | `id_venda`       | `id_cliente`, `id_usuario` |
+| `item_venda`  | `id_item_venda`  | `id_venda`, `id_produto`   |
+| `pedido`      | `id_pedido`      | `id_cliente`               |
+| `item_pedido` | `id_item_pedido` | `id_pedido`, `id_produto`  |
+| `pagamento`   | `id_pagamento`   | `id_venda`, `id_pedido`    |
+| `notificacao` | `id_notificacao` | `id_usuario`               |
 
 ---
 
-## 1.4 Processo de Normalização (1FN, 2FN e 3FN)
+## 1.4 Processo de Normalização
 
-**1FN — grupos repetitivos e multivalorados:** os itens de uma venda ou pedido não ficam como lista dentro da venda/pedido: viraram linhas em `item_venda` e `item_pedido`. Cada coluna guarda um único valor. O endereço do cliente é tratado como texto único `[CONFIRMAR: se o grupo decidir separar logradouro, número, bairro e CEP, atualizar aqui e no SQL]`. Tamanho e cor ficam em colunas próprias de `produto`, e cada variação é um produto.
+### Primeira Forma Normal (1FN)
 
-**2FN — dependências parciais:** as tabelas usam chave primária simples (`id_...`), então não há dependência parcial. Nas tabelas de itens, quantidade e preço dependem do item inteiro (venda + produto), não só de uma parte.
+As tabelas possuem atributos individuais, evitando armazenar vários valores em uma única coluna.
 
-**3FN — dependências transitivas:**
+Os produtos de uma venda ou pedido são armazenados separadamente nas tabelas `item_venda` e `item_pedido`.
 
-| Situação | Tratamento |
-|---|---|
-| Dados do produto (nome, categoria, preço) repetidos em cada item | Ficam só em `produto`; o item guarda apenas a FK |
-| Dados do cliente repetidos em cada venda/pedido | Ficam só em `cliente`; venda/pedido guardam a FK |
-| Dados de estoque misturados ao produto | Separados em `estoque`, pois mudam em ritmo diferente e por motivos diferentes |
-| `preco_unitario` no item | **Não é redundância**: é o preço praticado no momento da venda (histórico), que pode diferir do preço atual do produto |
-| `valor_total` em `venda` e `pedido` | Atributo derivado mantido deliberadamente por desempenho, protegido por triggers que o recalculam (RN13) |
+### Segunda Forma Normal (2FN)
 
-**Justificativa do processo:** a 1FN evita itens empilhados numa célula e permite somar vendas por produto. A 2FN e a 3FN evitam que uma mudança de nome, preço ou endereço precise ser feita em vários lugares e gere inconsistência.
+As tabelas possuem chaves primárias próprias, evitando dependências parciais dos atributos em relação à chave.
+
+Os dados dos produtos são armazenados em sua própria tabela, enquanto os itens mantêm apenas as informações necessárias da operação.
+
+### Terceira Forma Normal (3FN)
+
+Os dados de clientes, produtos e usuários são mantidos em tabelas separadas, evitando repetições e dependências desnecessárias.
+
+A tabela `estoque` também é separada de `produto`, permitindo organizar o controle das quantidades disponíveis.
 
 ---
 
 ## 1.5 Justificativas Técnicas das Decisões
 
-**Chaves primárias:** `INT AUTO_INCREMENT` em todas as tabelas, pois não há identificador natural estável (e-mail e nome mudam; produtos têm variações de tamanho/cor).
+- **Chaves primárias:** identificam cada registro de forma única.
+- **Chaves estrangeiras:** mantêm os relacionamentos entre as tabelas.
+- **UNIQUE:** impede a repetição de informações que devem ser únicas, como e-mails.
+- **NOT NULL:** define campos obrigatórios.
+- **CHECK:** valida valores, impedindo quantidades e preços negativos.
+- **ENUM:** limita campos a opções previamente definidas.
+- **DEFAULT:** define valores iniciais automaticamente.
+- **Triggers:** criam registros de estoque ao cadastrar produtos e recalculam os totais das vendas e pedidos.
 
-**Chaves estrangeiras e relacionamentos:**
+O banco também utiliza views para facilitar consultas de estoque baixo, históricos e vendas por período.
 
-| FK | Relacionamento | Ação | Motivo |
-|---|---|---|---|
-| `venda.id_cliente`, `pedido.id_cliente` | Cliente realiza venda/pedido | `ON DELETE SET NULL` | Preserva o histórico se o cliente for removido (RN14) |
-| `venda.id_usuario` | Usuário registra venda | `RESTRICT` | Toda venda tem responsável (RN05, RN07) |
-| `item_venda.id_venda`, `item_pedido.id_pedido` | Venda/pedido possui itens | `CASCADE` | Item não existe sem a venda/pedido |
-| `item_*.id_produto`, `estoque.id_produto` | Produto em itens e estoque | `RESTRICT` | Produto com histórico não é apagado (RN14) |
-| `pagamento.id_venda`, `pagamento.id_pedido` | Pagamento de venda ou pedido | `RESTRICT` | Pagamento é registro financeiro (RN05, RN14) |
-| `notificacao.id_usuario` | Usuário recebe notificação | `CASCADE` | Notificação só faz sentido para o usuário |
-
-**Restrições:**
-
-| Restrição | Regra |
-|---|---|
-| `email UNIQUE` em `cliente` e `usuario` | RN08 (identificação única do usuário) |
-| `usuario.senha_hash NOT NULL` | RNF04 |
-| `usuario.perfil ENUM('Proprietario','Funcionario')` | RN07, RN08 |
-| `produto.preco >= 0`; `estoque.quantidade_atual >= 0`; `estoque.estoque_minimo >= 0` | RN11 |
-| `item_*.quantidade > 0`; `item_*.preco_unitario >= 0`; `valor_total >= 0` | RN02, RN11 |
-| `estoque.id_produto UNIQUE` | Um registro de estoque por produto (RN03, RN10) |
-| `ENUM` de status em venda, pedido e pagamento | RN05 |
-| `ENUM` de forma de pagamento | RN04 |
-| Índices por data e status | RNF06 |
-| `CHECK ((id_venda IS NULL) <> (id_pedido IS NULL))` em `pagamento` | RN12 (**adicionar ao script**, hoje só está no comentário) |
-
-**Decisões arquiteturais:**
-
-| Decisão | Motivo |
-|---|---|
-| Venda (presencial) e pedido (online) em tabelas separadas | Fluxos e status diferentes (o pedido tem etapas de envio) |
-| Triggers de criação de estoque e de recálculo de totais | Mantêm RN10 e RN13 sem depender da aplicação |
-| Views (`vw_estoque_baixo`, `vw_historico_vendas`, `vw_historico_pedidos`, `vw_total_vendas_por_mes`) | Consultas prontas para a interface e para BI |
-| Baixa automática de estoque na aplicação ou em procedure transacional | Limitação conhecida do script atual (RN03) `[PREENCHER: decisão final do grupo]` |
+**Pontos que precisam ser conferidos na implementação:** a regra de pagamento ligado exclusivamente a uma venda ou pedido e a atualização automática do estoque nas operações de saída.
 
 ---
 
-## 1.6 Proposta de Arquitetura Analítica para BI e IA
+## 1.6 Proposta de BI e IA
 
-**Informações estratégicas:** quais produtos giram mais e quais ficam parados; quando o estoque vai acabar; faturamento por período, categoria e canal (presencial × online); formas de pagamento mais usadas; gargalos no fluxo dos pedidos online; clientes mais recorrentes.
+O banco de dados poderá servir como base para a criação de indicadores que auxiliem a administração da Coruja Surf.
 
-**KPIs propostos:**
+### Indicadores propostos
 
-| Código | KPI | Fórmula | Período |
-|---|---|---|---|
-| K1 | Faturamento | Soma de `valor_total` das vendas confirmadas/concluídas e pedidos pagos | Mensal |
-| K2 | Ticket médio | Faturamento ÷ número de vendas/pedidos | Mensal |
-| K3 | Produtos abaixo do estoque mínimo | Contagem em que `quantidade_atual <= estoque_minimo` | Diário |
-| K4 | Taxa de cancelamento | Cancelados ÷ total de vendas/pedidos | Mensal |
-| K5 | Pagamentos pendentes | Contagem e valor de pagamentos com status Pendente | Semanal |
-| K6 | Participação por forma de pagamento | Valor por forma ÷ valor total pago | Mensal |
-| K7 | Produtos mais vendidos | Soma de `quantidade` por produto | Mensal |
+| Código | Indicador                  | Objetivo                                       |
+| ------ | -------------------------- | ---------------------------------------------- |
+| K1     | Faturamento mensal         | Acompanhar os resultados das vendas.           |
+| K2     | Ticket médio               | Identificar o valor médio das operações.       |
+| K3     | Produtos com estoque baixo | Acompanhar produtos que precisam de reposição. |
+| K4     | Taxa de cancelamento       | Analisar vendas e pedidos cancelados.          |
+| K5     | Pagamentos pendentes       | Acompanhar pagamentos ainda não confirmados.   |
+| K6     | Formas de pagamento        | Identificar as formas mais utilizadas.         |
+| K7     | Produtos mais vendidos     | Identificar os produtos com maior saída.       |
 
-**Potencial para BI:** o modelo fornece fatos (`item_venda`, `item_pedido`, `pagamento`) ligados a dimensões (`produto`, `cliente`, `usuario`, tempo), o que sustenta dashboards de faturamento, estoque e pagamentos. As views já agregam por mês e por situação.
+### Possibilidades de BI
 
-**Aplicações de IA:** previsão de demanda por produto e categoria a partir do histórico de itens; sugestão de reposição quando o estoque tende a ficar abaixo do mínimo; recomendação de produtos complementares a partir de itens comprados juntos; detecção de padrões de recusa/estorno em pagamentos.
+Com esses dados, poderá ser desenvolvido um painel de indicadores para acompanhar vendas, estoque, pedidos e pagamentos.
 
-**Rastreabilidade** (as consultas G/A abaixo precisam existir no script com esses códigos; ver seção 3):
+### Possibilidades de IA
 
-| Problema ou KPI | Tabelas envolvidas | Consulta |
-|---|---|---|
-| P1 — controle de estoque inadequado | `produto`, `estoque` | G01 |
-| P2 — falta de cadastros | `cliente`, `produto`, `usuario` | G02 |
-| P3 — acompanhar vendas e pedidos | `venda`, `pedido`, `item_venda`, `item_pedido`, `cliente`, `usuario` | G03, G04 |
-| P4 — acompanhar pagamentos | `pagamento`, `venda`, `pedido` | G05 |
-| P5 — falta de avisos | `notificacao`, `usuario` | G06 |
-| P6 — controle de acesso | `usuario` | G07 |
-| K1 — faturamento mensal | `venda`, `pedido` | G08 |
-| K2 — ticket médio | `venda`, `pedido` | G09 |
-| K3 — abaixo do mínimo | `produto`, `estoque` | G01 |
-| K4 — taxa de cancelamento | `venda`, `pedido` | G10 |
-| K5 — pagamentos pendentes | `pagamento` | G05 |
-| K6 — forma de pagamento | `pagamento` | G11 |
-| K7 — produtos mais vendidos | `item_venda`, `item_pedido`, `produto` | G12 |
-| RN12, RN13, RN03, RN02 (auditoria) | conforme a regra | A01 a A06 |
+Futuramente, a inteligência artificial poderá auxiliar na previsão de demanda, sugestão de reposição de produtos e identificação de padrões nas vendas.
+
+Essas funcionalidades são propostas futuras e não fazem parte da implementação SQL atual.
 
 ---
 
 ## 2. Modelo Lógico Relacional
 
-- Software utilizado: [PREENCHER: ex. brModelo]
-- Arquivo do diagrama: [PREENCHER]
+O modelo lógico deverá apresentar as tabelas, seus atributos, tipos de dados, chaves primárias, chaves estrangeiras e cardinalidades.
 
-O diagrama mostra tabelas, colunas com tipo, PK, FK e cardinalidades convertidas. NOT NULL, UNIQUE, CHECK e DEFAULT estão no dicionário de dados: [PREENCHER link].
+**Arquivo do diagrama:** [INSERIR LINK DO MODELO LÓGICO].
+
+**Software utilizado:** [PREENCHER].
 
 ---
 
-## 3. Script SQL Completo
+## 3. Implementação SQL
 
-- Arquivo: [PREENCHER: `docs/script.sql`]
-- SGBD: MySQL 8.0+
+O banco de dados foi desenvolvido utilizando MySQL 8.0 ou versão compatível.
 
-Ordem do script: CREATE DATABASE → CREATE TABLE com constraints → INSERT (massa) → SELECT com JOIN → UPDATE → DELETE → consultas gerenciais (G01…) → consultas de auditoria (A01…).
+**Nome do banco:** `coruja_surf`
 
-| Código | Pergunta | Atende |
-|---|---|---|
-| G01 | Quais produtos estão com estoque abaixo ou igual ao mínimo? | P1, K3 |
-| G02 | Quantos clientes, produtos e usuários ativos estão cadastrados? | P2 |
-| G03 | Qual o histórico de vendas, com cliente e usuário responsável? | P3 |
-| G04 | Qual o status atual dos pedidos online e seus itens? | P3 |
-| G05 | Quais pagamentos estão pendentes, e de quanto? | P4, K5 |
-| G06 | Quais notificações não lidas cada usuário tem? | P5 |
-| G07 | Quantos usuários há por perfil e quais estão ativos? | P6 |
-| G08 | Qual o faturamento por mês? | K1 |
-| G09 | Qual o ticket médio por mês? | K2 |
-| G10 | Qual a taxa de cancelamento de vendas e pedidos? | K4 |
-| G11 | Quanto foi pago por forma de pagamento? | K6 |
-| G12 | Quais os produtos mais vendidos? | K7 |
-| A01 | Existe pagamento ligado a venda e pedido ao mesmo tempo, ou a nenhum? | RN12 |
-| A02 | Existe venda sem nenhum item? | RN02 |
-| A03 | Existe pedido sem nenhum item? | RN02 |
-| A04 | O `valor_total` de alguma venda/pedido difere da soma dos itens? | RN13 |
-| A05 | Existe produto sem registro de estoque? | RN10 |
-| A06 | Existe estoque abaixo do mínimo sem notificação de estoque baixo? | RN06 |
+O script SQL contempla:
 
-> Estas consultas ainda precisam ser escritas no script com cabeçalho `-- G01 — pergunta / -- Atende: ...`. Teste o script do zero antes de entregar.
+- Criação do banco de dados.
+- Criação das tabelas.
+- Definição das chaves primárias e estrangeiras.
+- Restrições de integridade.
+- Inserção de dados fictícios.
+- Triggers para atualização de informações.
+- Views para consultas.
+- Consultas de demonstração.
+
+### Consultas gerenciais planejadas
+
+| Código | Pergunta respondida                                             |
+| ------ | --------------------------------------------------------------- |
+| G01    | Quais produtos estão com estoque abaixo ou igual ao mínimo?     |
+| G02    | Quantos clientes, produtos e usuários ativos estão cadastrados? |
+| G03    | Qual o histórico de vendas e seus responsáveis?                 |
+| G04    | Qual o status atual dos pedidos on-line?                        |
+| G05    | Quais pagamentos estão pendentes?                               |
+| G06    | Quais notificações ainda não foram lidas?                       |
+| G07    | Quantos usuários existem por perfil?                            |
+| G08    | Qual o faturamento por mês?                                     |
+| G09    | Qual o ticket médio por mês?                                    |
+| G10    | Qual a taxa de cancelamento?                                    |
+| G11    | Quanto foi pago por forma de pagamento?                         |
+| G12    | Quais produtos são mais vendidos?                               |
+
+### Consultas de auditoria planejadas
+
+| Código | Verificação                                                                 |
+| ------ | --------------------------------------------------------------------------- |
+| A01    | Existem pagamentos ligados a uma venda e pedido ao mesmo tempo ou a nenhum? |
+| A02    | Existem vendas sem itens?                                                   |
+| A03    | Existem pedidos sem itens?                                                  |
+| A04    | Os totais correspondem à soma dos itens?                                    |
+| A05    | Existem produtos sem registro de estoque?                                   |
+| A06    | Existem produtos com estoque baixo sem notificação?                         |
+
+**Importante:** as consultas acima devem estar implementadas e testadas no arquivo SQL final antes da entrega.
 
 ---
 
 ## 4. Massa de Dados
 
-- Arquivo: [PREENCHER: dentro do script ou `docs/massa_de_dados.sql`]
-- Os dados são fictícios; nenhum dado real de cliente da Coruja Surf foi usado.
+Os dados utilizados no banco são fictícios e servem para demonstrar o funcionamento das tabelas e relacionamentos.
 
-| Tabela | Registros | Justificativa com base no porte real |
-|---|---|---|
-| `usuario` | [PREENCHER] | 1 proprietário + 4 colaboradores |
-| `cliente` | [PREENCHER] | [PREENCHER: clientes ativos informados] |
-| `produto` | [PREENCHER] | [PREENCHER: catálogo real, com variações de tamanho e cor] |
-| `estoque` | igual a `produto` | Um registro por produto (RN10) |
-| `venda` / `item_venda` | [PREENCHER] | [PREENCHER: vendas por semana × período coberto] |
-| `pedido` / `item_pedido` | [PREENCHER] | [PREENCHER: pedidos online por semana × período coberto] |
-| `pagamento` | [PREENCHER] | Um ou mais por venda/pedido |
-| `notificacao` | [PREENCHER] | Estoque baixo, novos pedidos, pagamentos |
+O script atual possui uma pequena massa de dados de exemplo, incluindo clientes, usuários, produtos, vendas, pedidos, pagamentos e notificações.
 
-**Situações que a massa precisa cobrir:** vendas e pedidos cancelados; clientes sem compras; produtos abaixo do mínimo; pagamentos em todas as formas e status (incluindo recusado e estornado); registros em vários meses; venda sem cliente; notificações lidas e não lidas.
+A quantidade atual deve ser ampliada ou justificada conforme os números reais de movimentação da organização, caso o entrevistado os disponibilize.
+
+| Tabela        | Registros atuais |
+| ------------- | ---------------: |
+| `cliente`     |                3 |
+| `usuario`     |                2 |
+| `produto`     |                4 |
+| `estoque`     |                4 |
+| `venda`       |                2 |
+| `item_venda`  |                3 |
+| `pedido`      |                1 |
+| `item_pedido` |                2 |
+| `pagamento`   |                2 |
+| `notificacao` |                2 |
+
+Os dados permitem demonstrar situações como estoque baixo, vendas, pedidos, pagamentos pendentes e notificações.
 
 ---
 
 ## 5. Repositório GitHub
 
-- Relatório técnico: este `README.md`
-- Dicionário de dados: [PREENCHER link]
-- Diagramas: [PREENCHER links]
-- Levantamento e evidências: [PREENCHER links]
-- Script SQL: [PREENCHER link]
-- Histórico de commits distribuído entre todos os integrantes, cada um com a própria conta do GitHub e nome compatível com a tabela de Integrantes.
+O projeto está disponível no GitHub:
+
+[https://github.com/zVitou/Entrega-2-quarta-feira](https://github.com/zVitou/Entrega-2-quarta-feira)
+
+Arquivos que deverão estar organizados no repositório:
+
+| Artefato                   | Arquivo                                  |
+| -------------------------- | ---------------------------------------- |
+| Relatório técnico          | `README.md`                              |
+| DER conceitual revisado    | [INSERIR CAMINHO]                        |
+| Modelo lógico              | [INSERIR CAMINHO]                        |
+| Dicionário de dados        | [INSERIR CAMINHO]                        |
+| Levantamento de requisitos | [INSERIR CAMINHO]                        |
+| Script SQL                 | [INSERIR CAMINHO]                        |
+| Evidência da entrevista    | `evidencias/entrevista_videochamada.jpg` |
+| Slides da apresentação     | [INSERIR CAMINHO]                        |
+
+O repositório deverá manter os arquivos atualizados e o histórico de commits dos integrantes.
 
 ---
 
 ## 6. Uso de Inteligência Artificial
 
-Preencha **uma linha por uso relevante** (inclusive os da Entrega 1, como o ChatGPT usado no README e no dicionário, se continuaram nesta etapa).
+As ferramentas de inteligência artificial deverão ser documentadas de acordo com seu uso real durante o desenvolvimento do projeto.
 
-| Item | Registro |
-|---|---|
-| Ferramenta e etapa | [PREENCHER: ex. Claude — organização do README conforme esqueleto e rascunho da seção de rastreabilidade] |
-| Motivação | [PREENCHER] |
-| Prompt(s) utilizados | [PREENCHER texto exato ou muito próximo] |
-| Resposta recebida | [PREENCHER resumo] |
-| Fontes consultadas e verificadas | [PREENCHER] |
-| Trechos rejeitados ou corrigidos | [PREENCHER] |
-| Justificativa da escolha final | [PREENCHER] |
-| Reflexão crítica | [PREENCHER limites, erros e vieses] |
+| Item                             | Registro    |
+| -------------------------------- | ----------- |
+| Ferramenta utilizada             | [PREENCHER] |
+| Etapa do trabalho                | [PREENCHER] |
+| Motivação                        | [PREENCHER] |
+| Prompt utilizado                 | [PREENCHER] |
+| Resposta recebida                | [PREENCHER] |
+| Fontes verificadas               | [PREENCHER] |
+| Trechos corrigidos ou rejeitados | [PREENCHER] |
+| Justificativa da escolha final   | [PREENCHER] |
+| Reflexão crítica                 | [PREENCHER] |
 
-Repita a tabela para cada uso: levantamento de processos/requisitos/regras, normalização, geração da massa de dados, consultas SQL, slides. Se alguma etapa não usou IA, declare isso explicitamente.
+As informações geradas por IA devem ser revisadas e validadas pelo grupo.
 
 ---
 
 ## 7. Apresentação Corporativa Final
 
-- Slides: [PREENCHER link/arquivo]
+A apresentação deverá ter aproximadamente oito minutos e seguir a sequência:
 
-Roteiro do pitch (8 minutos): 1) problema; 2) solução; 3) modelo lógico; 4) SQL rodando; 5) consultas G e A; 6) BI e IA; 7) benefícios para decisão.
+1. Contextualização da empresa e dos problemas identificados.
+2. Apresentação da solução proposta.
+3. Demonstração do modelo lógico.
+4. Explicação da implementação SQL.
+5. Demonstração das consultas gerenciais e de auditoria.
+6. Apresentação das possibilidades de BI e IA.
+7. Benefícios que o sistema poderá oferecer à organização.
+
+**Link dos slides:** [INSERIR LINK].
+
+---
+
+
