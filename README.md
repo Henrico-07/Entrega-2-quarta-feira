@@ -445,23 +445,19 @@ O grupo deverá manter os arquivos atualizados e utilizar commits para registrar
 
 ---
 
-## 6. Uso de Inteligência Artificial
+## ## 6. Uso de Inteligência Artificial
 
-As ferramentas de inteligência artificial deverão ser documentadas de acordo com seu uso real durante o desenvolvimento do projeto.
-
-| Item                             | Registro    |
-| -------------------------------- | ----------- |
-| Ferramenta utilizada             | [PREENCHER] |
-| Etapa do trabalho                | [PREENCHER] |
-| Motivação                        | [PREENCHER] |
-| Prompt utilizado                 | [PREENCHER] |
-| Resposta recebida                | [PREENCHER] |
-| Fontes verificadas               | [PREENCHER] |
-| Trechos corrigidos ou rejeitados | [PREENCHER] |
-| Justificativa da escolha final   | [PREENCHER] |
-| Reflexão crítica                 | [PREENCHER] |
-
-As informações geradas por IA devem ser revisadas e validadas pelo grupo.
+| **Item** | **Registro** |
+|---|---|
+| **Ferramenta utilizada** | ChatGPT (OpenAI),Cloude ia|
+| **Etapa do trabalho** | Levantamento de requisitos, identificação das entidades, definição de atributos e relacionamentos e revisão do modelo de dados. |
+| **Motivação** | Utilizar a IA como apoio para compreender os requisitos do sistema Coruja Surf, organizar as informações e auxiliar na construção do modelo do banco de dados. |
+| **Prompt utilizado** | Solicitação de auxílio para identificar as entidades, atributos, chaves primárias e estrangeiras e relacionamentos necessários para o banco de dados da Coruja Surf, considerando os requisitos apresentados no trabalho. |
+| **Resposta recebida** | A IA sugeriu entidades como CLIENTE, PRODUTO, PEDIDO, ITEM_PEDIDO, PAGAMENTO, USUARIO e MOVIMENTACAO_ESTOQUE, além de possíveis atributos, chaves e relacionamentos entre elas. |
+| **Fontes verificadas** | Enunciado do trabalho, requisitos apresentados pelo professor e materiais de referência utilizados na atividade. |
+| **Trechos corrigidos ou rejeitados** | Foram realizados ajustes no modelo conforme as orientações do professor. Foram mantidas as entidades necessárias, incluindo ITEM_PEDIDO, e removida a entidade FORNECEDOR, pois a empresa produz suas próprias roupas. Também foram considerados os pagamentos parcelados. |
+| **Justificativa da escolha final** | O modelo final foi definido com base nos requisitos do projeto e nas correções realizadas pelo grupo, utilizando as sugestões da IA apenas como apoio. |
+| **Reflexão crítica** | A inteligência artificial ajudou a organizar as ideias e facilitou o desenvolvimento do modelo de dados. Porém, suas sugestões precisaram ser analisadas e corrigidas para atender corretamente às necessidades do sistema. O grupo manteve a responsabilidade pelas decisões finais. |
 
 ---
 
